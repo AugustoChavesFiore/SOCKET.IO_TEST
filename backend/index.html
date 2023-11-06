@@ -43,7 +43,6 @@
           }
         });
         socket.on('message', function(msg) {
-          //agregar el nombre al input name
           name.value = localStorage.getItem('name');
           const item = document.createElement('li');
           item.textContent = `
