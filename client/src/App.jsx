@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import './App.css'
 
 function App() {
-  const socket = io('https://zw044vqw-4000.brs.devtunnels.ms/')
+  const socket = io('http://localhost:4000')
   const[message, setMessage] = useState([])
   const [text, setText] = useState('')
   
