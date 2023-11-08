@@ -24,16 +24,18 @@ const SaveMessage = []
 io.on('connection', (socket) => {
     console.log(`User Connected`);
     console.log(SaveMessage);
-
-    SaveMessage.forEach(message => {
-        socket.emit('message', message)
-    });
-
+    socket.emit('previousMessages', SaveMessage)
     socket.on('message', (data) => {
         SaveMessage.push(data)
         console.log(data);
         io.emit('message', data)
     });
+    //logica para typing
+
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', data)
+    })
+ 
 
     socket.on('disconnect', () => {
         console.log('User Disconnected');
